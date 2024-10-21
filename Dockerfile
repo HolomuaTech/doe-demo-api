@@ -9,7 +9,7 @@ RUN npm install
 
 COPY server.js .
 
-EXPOSE 8000
+EXPOSE 8080
 CMD [ "node", "server.js" ]
 
 # build command: 

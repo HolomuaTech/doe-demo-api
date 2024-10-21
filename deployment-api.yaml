@@ -19,7 +19,7 @@ spec:
         image: supermongol/hello-world-k8s-api
         imagePullPolicy: Always
         ports:
-        - containerPort: 8000
+        - containerPort: 8080
 
 # CREATE DEPLOYMENT: 
 #   kubectl apply -f deployment-api.yaml
