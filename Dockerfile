@@ -1,12 +1,20 @@
-FROM nginx:alpine
+# Dockerfile
+FROM node:18
 
-# Copy custom nginx.conf to the container
-COPY ./nginx.conf /etc/nginx/nginx.conf
-COPY ./index.html /usr/share/nginx/html/index.html
+WORKDIR /usr/src/app
 
-# Expose port 8080 for Cloud Run
-EXPOSE 8080
+COPY package*.json ./
 
-# Start Nginx using the custom configuration
-CMD ["nginx", "-g", "daemon off;"]
+RUN npm install
 
+COPY server.js .
+
+EXPOSE 8000
+CMD [ "node", "server.js" ]
+
+# build command: 
+#   docker build -t supermongol/hello-world-k8s-api .
+# push command: 
+#   docker push supermongol/hello-world-k8s-api
+# Run local: 
+#   docker run -p 8000:8000 supermongol/hello-world-k8s-api

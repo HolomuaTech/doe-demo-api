@@ -1,0 +1,14 @@
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-k8s-api
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8000
+    targetPort: 8000
+  selector:
+    app: hello-world-k8s-api
+
+# CREATE SERVICE: kubectl apply -f service-api.yaml
