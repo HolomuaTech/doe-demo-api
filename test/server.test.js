@@ -22,12 +22,14 @@ describe('Server End-to-End Test', () => {
   });
 
   it('should respond with correct message on POST /submit', async () => {
-    await request(app)
+    const response = await agent
       .post('/submit')
       .send({ name: 'John Doe' })
       .set('Content-Type', 'application/json')
       .expect('Content-Type', /json/)
       .expect(201);
+
+    assert.deepStrictEqual(response.body, { message: 'Hello, John Doe! Nice to meet you!' });
   });
 
   after(async () => {
