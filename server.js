@@ -7,19 +7,54 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/message', (req, res) => {
-  res.json({ message: "Welcome User" });
-  console.log("API message sent");
+  try {
+    const message = { message: "Welcome User" };
+    res.status(200).json(message);
+    console.log(`API message sent: ${JSON.stringify(message)}`);
+  } catch (error) {
+    console.error('Error in /message endpoint:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 // Endpoint to handle POST request
 app.post('/submit', (req, res) => {
-  const { name } = req.body;
-  res.json({ message: `Hello, ${name}! nice to meet you!` });
-  console.log("API message sent");
+  try {
+    const { name } = req.body;
+    
+    if (!name || typeof name !== 'string') {
+      return res.status(400).json({ error: 'Invalid or missing name' });
+    }
+
+    const sanitizedName = name.trim().slice(0, 50); // Limit name length
+    const message = `Hello, ${sanitizedName}! Nice to meet you!`;
+    
+    res.status(201).json({ message });
+    console.log(`Submit API: Message sent for ${sanitizedName}`);
+  } catch (error) {
+    console.error('Error in /submit endpoint:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
-app.listen(8080, () => {
-  console.log(`Server is running on port 8080.`);
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, '0.0.0.0', (err) => {
+  if (err) {
+    console.error('Error starting server:', err);
+    process.exit(1);
+  }
+  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log('Press CTRL-C to stop');
 });
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+  console.log('SIGTERM signal received: closing HTTP server')
+  app.close(() => {
+    console.log('HTTP server closed')
+    process.exit(0)
+  })
+})
 
 module.exports = { app }
