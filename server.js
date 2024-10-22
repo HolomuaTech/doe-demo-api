@@ -26,7 +26,7 @@ app.post('/submit', (req, res) => {
       return res.status(400).json({ error: 'Invalid or missing name' });
     }
 
-    const sanitizedName = name.trim().slice(0, 50); // Limit name length
+    const sanitizedName = name.trim(); // Remove leading and trailing whitespace
     const message = `Hello, ${sanitizedName}! Nice to meet you!`;
     
     res.status(201).json({ message });
@@ -39,7 +39,7 @@ app.post('/submit', (req, res) => {
 
 const PORT = process.env.PORT || 8080;
 
-app.listen(PORT, '0.0.0.0', (err) => {
+const server = app.listen(PORT, '0.0.0.0', (err) => {
   if (err) {
     console.error('Error starting server:', err);
     process.exit(1);
@@ -49,12 +49,16 @@ app.listen(PORT, '0.0.0.0', (err) => {
 });
 
 // Graceful shutdown
-process.on('SIGTERM', () => {
-  console.log('SIGTERM signal received: closing HTTP server')
-  app.close(() => {
+process.on('SIGINT', () => {
+  console.log('SIGINT signal received: closing HTTP server')
+  server.close((err) => {
+    if (err) {
+      console.error('Error closing server:', err);
+      process.exit(1);
+    }
     console.log('HTTP server closed')
     process.exit(0)
   })
 })
 
-module.exports = { app }
+module.exports = { app, server }
