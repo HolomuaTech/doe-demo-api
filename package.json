@@ -8,8 +8,7 @@
     "dev": "nodemon server.js",
     "test": "node test/server.test.js",
     "coverage": "c8 --reporter=lcov --reporter=text npm run test",
-    "portage": "portage run all --config .portage.yml",
-    "test:coverage": "c8 --reporter=lcov --reporter=text mocha test/server.test.js"
+    "portage": "portage run all --config .portage.yml"
   },
   "keywords": [],
   "author": "",
