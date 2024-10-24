@@ -14,11 +14,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "c8": "^10.1.2",
     "cors": "^2.8.5",
     "express": "^4.19.2"
   },
   "devDependencies": {
-    "c8": "^10.1.2",
     "nodemon": "^3.1.0",
     "supertest": "^7.0.0"
   },
