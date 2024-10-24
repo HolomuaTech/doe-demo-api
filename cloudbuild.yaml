@@ -1,4 +1,10 @@
 steps:
+  # Install all dependencies, including devDependencies
+  - name: 'node:18'
+    entrypoint: 'npm'
+    args: ['install']
+
+  # Run test coverage
   - name: 'node:18'
     entrypoint: 'npm'
     args: [
