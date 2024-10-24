@@ -1,0 +1,14 @@
+{
+  "reporter": [
+    "lcov",
+    "text-summary"
+  ],
+  "all": true,
+  "check-coverage": true,
+  "include": [
+    "*.js"
+  ],
+  "exclude": [
+    "test/**/*.js"
+  ]
+}
