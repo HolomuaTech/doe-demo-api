@@ -1,0 +1,18 @@
+semgrep:
+  severityLimit:
+    error:
+      enabled: true
+      limit: 0
+grype:
+  # Ignore vulnerabilities with very low Exploit Probability Scores
+  epssRiskAcceptance:
+    enabled: true
+    score: 0.001
+  critical:
+    enabled: false
+  high:
+    enabled: false
+coverage:
+  lineThreshold: 0.5
+  functionThreshold: 1
+  branchThreshold: 0.5
