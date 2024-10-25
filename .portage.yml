@@ -1,3 +1,7 @@
 imageTag: supermongol/hello-world-k8s-api
 imagePublish:
   enabled: false
+codeScan:
+  coverageFile: coverage/lcov.info
+deploy:
+  gatecheckConfigFilename: .gatecheck.yml

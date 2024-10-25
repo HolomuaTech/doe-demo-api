@@ -2,7 +2,7 @@ steps:
   # Install all dependencies, including devDependencies
   - name: 'node:18'
     entrypoint: 'npm'
-    args: ['install']
+    args: ['ci']
 
   # Run test coverage
   - name: 'node:18'
@@ -10,17 +10,14 @@ steps:
     args: [
       'run', 'coverage'
     ]
-  # Portage to build your image
-  - name: 'ghcr.io/easy-up/portage:v0.0.1-rc.19'
-    env:
-     - "PORTAGE_IMAGE_PUBLISH_ENABLED=0"
-    args: [
-      'run', 'all', '--tag', '${_IMAGE_NAME}'
-    ]
 
-  # Push the Docker image to Artifact Registry
-  - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', '${_IMAGE_NAME}']
+  # Portage to build your image
+  - name: 'ghcr.io/easy-up/portage:v0.0.2'
+    env:
+     - "PORTAGE_IMAGE_PUBLISH_ENABLED=1"
+    args: [
+      'run', 'all', '--config', '.portage.yml', '--tag', '${_IMAGE_NAME}'
+    ]
 
   # Deploy the application to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
