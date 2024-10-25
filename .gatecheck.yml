@@ -8,10 +8,11 @@ grype:
   epssRiskAcceptance:
     enabled: true
     score: 0.001
-  critical:
-    enabled: false
-  high:
-    enabled: false
+  severityLimit:
+    critical:
+      enabled: false
+    high:
+      enabled: false
 coverage:
   lineThreshold: 0.5
   functionThreshold: 1
