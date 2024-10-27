@@ -37,3 +37,7 @@ substitutions:
 options:
   logging: CLOUD_LOGGING_ONLY
 
+artifacts:
+  objects:
+    location: 'gs://doe-demo-build-artifacts/doe-demo-api/'
+    paths: ['artifacts/*.*']
