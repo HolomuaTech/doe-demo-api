@@ -1,7 +1,8 @@
 {
   "reporter": [
     "lcov",
-    "text-summary"
+    "text-summary",
+    "cobertura"
   ],
   "all": true,
   "check-coverage": true,
