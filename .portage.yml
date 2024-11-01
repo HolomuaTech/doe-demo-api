@@ -1,4 +1,4 @@
-imageTag: supermongol/hello-world-k8s-api
+imageTag: supermongol/doe-demo-api
 imagePublish:
   enabled: false
 codeScan:
