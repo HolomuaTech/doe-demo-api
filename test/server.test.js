@@ -29,7 +29,7 @@ describe('Server End-to-End Test', () => {
       .expect('Content-Type', /json/)
       .expect(201);
 
-    assert.deepStrictEqual(response.body, { message: 'Hello, John Doe! Nice to meet you!' });
+    assert.deepStrictEqual(response.body, { message: 'Hi, John Doe! Nice to meet you!' });
   });
 
   after(async () => {
