@@ -27,7 +27,7 @@ app.post('/submit', (req, res) => {
     }
 
     const sanitizedName = name.trim(); // Remove leading and trailing whitespace
-    const message = `Hi, ${sanitizedName}! Nice to meet you!`;
+    const message = `Hello, ${sanitizedName}! Nice to meet you!`;
     
     res.status(201).json({ message });
     console.log(`Submit API: Message sent for ${sanitizedName}`);
