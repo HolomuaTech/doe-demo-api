@@ -39,5 +39,5 @@ options:
 
 artifacts:
   objects:
-    location: 'gs://doe-demo-build-artifacts/doe-demo-api/'
+    location: 'gs://gcp-demo-build-artifacts/gcp-demo-api/'
     paths: ['artifacts/*.*']
