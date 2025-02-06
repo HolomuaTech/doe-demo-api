@@ -41,3 +41,4 @@ artifacts:
   objects:
     location: 'gs://doe-demo-app-cloud-build-logs/doe-demo-api'
     paths: ['artifacts/*.*']
+    project: 'doe-demo-app'
