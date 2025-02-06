@@ -12,7 +12,7 @@ steps:
     ]
 
   # Portage to build your image
-  - name: 'ghcr.io/easy-up/portage:v0.0.2'
+  - name: 'ghcr.io/easy-up/portage:v0.0.1-rc.19'
     env:
      - "PORTAGE_IMAGE_PUBLISH_ENABLED=1"
     args: [
@@ -39,6 +39,5 @@ options:
 
 artifacts:
   objects:
-    location: 'gs://doe-demo-app-cloud-build-logs/doe-demo-api'
-    paths: ['artifacts/*.*']
-    project: 'doe-demo-app'
+    location: 'gs://doe-demo-app-cloud-build-logs'  # Remove the /doe-demo-api suffix
+    paths: ['artifacts/**/*']  # Use ** to catch all subdirectories
