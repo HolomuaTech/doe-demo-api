@@ -42,7 +42,19 @@ substitutions:
 options:
   logging: CLOUD_LOGGING_ONLY
 
+# artifacts:
+#   objects:
+#     location: 'gs://doe-demo-app-cloud-build-logs/'  # Remove the /doe-demo-api suffix
+#     paths: ['artifacts/**/*']  # Use ** to catch all subdirectories
+
 artifacts:
   objects:
-    location: 'gs://doe-demo-app-cloud-build-logs/'  # Remove the /doe-demo-api suffix
-    paths: ['artifacts/**/*']  # Use ** to catch all subdirectories
+    location: 'gs://doe-demo-app-cloud-build-logs'
+    paths: 
+      - 'artifacts/clamav-virus-report.txt'
+      - 'artifacts/gatecheck-bundle.tar.gz'
+      - 'artifacts/gatecheck-config.yml'
+      - 'artifacts/gitleaks-secrets-report.json'
+      - 'artifacts/grype-vulnerability-report-full.json'
+      - 'artifacts/semgrep-sast-report.json'
+      - 'artifacts/syft-sbom-report.json'
