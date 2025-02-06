@@ -19,6 +19,11 @@ steps:
       'run', 'all', '--config', '.portage.yml', '--tag', '${_IMAGE_NAME}'
     ]
 
+  # Debugging artifact upload issue
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'ls'
+    args: ['-la', 'artifacts/']
+
   # Deploy the application to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
@@ -39,5 +44,5 @@ options:
 
 artifacts:
   objects:
-    location: 'gs://doe-demo-app-cloud-build-logs'  # Remove the /doe-demo-api suffix
+    location: 'gs://doe-demo-app-cloud-build-logs/'  # Remove the /doe-demo-api suffix
     paths: ['artifacts/**/*']  # Use ** to catch all subdirectories
