@@ -39,5 +39,5 @@ options:
 
 artifacts:
   objects:
-    location: 'gs://doe-demo-app-cloud-build-logs/doe-demo-api/'
+    location: 'gs://doe-demo-app-cloud-build-logs'  # This matches the bucket we created
     paths: ['artifacts/*.*']
