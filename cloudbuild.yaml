@@ -32,12 +32,12 @@ steps:
 
 # Define the variables used in the build
 substitutions:
-  _IMAGE_NAME: "us-west1-docker.pkg.dev/holomua-doe-demo/doe-demo-container-registry/doe-demo-api"
+  _IMAGE_NAME: "us-west1-docker.pkg.dev/shared-resources-gcp/shared-container-registry/doe-demo-api"
 
 options:
   logging: CLOUD_LOGGING_ONLY
 
 artifacts:
   objects:
-    location: 'gs://gcp-demo-build-artifacts/gcp-demo-api/'
+    location: 'gs://doe-demo-app-cloud-build-logs/doe-demo-api/'
     paths: ['artifacts/*.*']
